@@ -10,7 +10,44 @@ namespace Problem4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(My());
+            Console.WriteLine(Recommended());
+        }
+
+        static int Recommended()
+        {
+            var largestPalindrome = 0;
+            var a = 999;
+            while (a >= 100)
+            {
+                int b;
+                int db;
+                if (a % 11 == 0)
+                {
+                    b = 999;
+                    db = 1;
+                }
+                else
+                {
+                    b = 990;
+                    db = 11;
+                }
+
+                while (b >= a)
+                {
+                    var m = a * b;
+                    if (m <= largestPalindrome)
+                        break;
+
+                    if (IsPalindrome(m))
+                        largestPalindrome = m;
+
+                    b -= db;
+                }
+
+                a--;
+            }
+
+            return largestPalindrome;
         }
 
         static int My()
