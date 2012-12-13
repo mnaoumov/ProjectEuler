@@ -49,6 +49,7 @@
     <Compile Include="PrimeChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecommendedSolver.cs" />
     <Compile Include="Tests.cs" />
   </ItemGroup>
   <ItemGroup>

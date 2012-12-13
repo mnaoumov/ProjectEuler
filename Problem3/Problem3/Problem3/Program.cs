@@ -6,7 +6,7 @@ namespace Problem3
     {
         static void Main(string[] args)
         {
-            ISolver solver = new MySolver();
+            ISolver solver = new RecommendedSolver();
             Console.WriteLine(solver.Solve());
         }
     }
