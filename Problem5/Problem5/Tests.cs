@@ -8,7 +8,7 @@ namespace Problem5
         [Test]
         public void For_10_is_correct()
         {
-            Assert.That(Program.MyCommonMultiplier(10), Is.EqualTo(2520));
+            Assert.That(MySolver.MyCommonMultiplier(10), Is.EqualTo(2520));
         }
     }
 }
