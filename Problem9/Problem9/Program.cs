@@ -10,7 +10,8 @@ namespace Problem9
     {
         static void Main(string[] args)
         {
-            var solver = new MySolver();
+            //var solver = new MySolver();
+            var solver = new RecommendedSolver();
             Console.WriteLine(solver.Solve(1000));
         }
     }
