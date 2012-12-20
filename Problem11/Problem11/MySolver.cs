@@ -9,6 +9,7 @@ namespace Problem11
     {
         int[,] _array;
         public const int Size = 20;
+        const int Amount = 4;
 
         public int Solve()
         {
@@ -36,29 +37,39 @@ namespace Problem11
 
             _array = PrepareArray(matrixStr);
             var maxProduct = int.MinValue;
-            foreach (Point point1 in GetPoints())
-                foreach (Point point2 in GetPoints(point1))
+
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
                 {
-                    foreach (Point point3 in GetPoints(point1, point2))
+                    for (int di = -1; di <= 1; di++)
                     {
-                        foreach (Point point4 in GetPoints(point1, point2, point3))
+                        for (int dj = -1; dj <= 1; dj++)
                         {
-                            int product = GetProduct(point1, point2, point3, point4);
+                            if (di == 0 && dj == 0)
+                                continue;
+
+                            if (!Validate(i, di) || !Validate(j, dj))
+                                continue;
+
+                            var product = 1;
+                            for (int k = 0; k < Amount; k++)
+                                product *= _array[i + k * di, j + k * dj];
+
                             if (product > maxProduct)
-                            {
                                 maxProduct = product;
-                                Console.WriteLine(string.Format("product - {0}", product));
-                                Console.WriteLine(string.Format("point1 - {0} - {1}", point1, GetValue(point1)));
-                                Console.WriteLine(string.Format("point2 - {0} - {1}", point2, GetValue(point2)));
-                                Console.WriteLine(string.Format("point3 - {0} - {1}", point3, GetValue(point3)));
-                                Console.WriteLine(string.Format("point4 - {0} - {1}", point4, GetValue(point4)));
-                                Console.WriteLine();
-                            }
                         }
                     }
                 }
+            }
 
             return maxProduct;
+        }
+
+        static bool Validate(int i, int di)
+        {
+            var last = i + (Amount - 1) * di;
+            return 0 <= last && last < Size;
         }
 
         int GetProduct(Point point1, Point point2, Point point3, Point point4)
